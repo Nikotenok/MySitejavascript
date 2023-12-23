@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шахова Дошка</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="chessboard" width="400" height="400"></canvas>
+
+<script>
+  const canvas = document.getElementById('chessboard');
+  const context = canvas.getContext('2d');
+
+  const cellSize = 50;
+
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const x = col * cellSize;
+      const y = row * cellSize;
+
+      if ((row + col) % 2 === 0) {
+        context.fillStyle = '#000';
+      } else {
+        context.fillStyle = '#FFF';
+      }
+
+      context.fillRect(x, y, cellSize, cellSize);
+    }
+  }
+</script>
+
+</body>
+</html>

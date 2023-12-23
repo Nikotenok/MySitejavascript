@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рахування цифр </title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+   <script type = "text/javascript">
+        function money(){
+        let money =+document.money.a.value;
+        let answer=document.getElementById("answer");
+        if(isNaN(money)){
+          string='Ви ввели не число.'
+        }else if (+money < 50 ||+money > 3000){
+    string='На жаль ви можете зняти гроші на суму від 50 грн до 3000 грн.';
+}else if(+money%10!=0){
+    string= `Найменша купюра банкомату - 10 грн, тому остачу банкомат спише як комісію.
+    Ваші гроші ${money - money%10} грн. Комісія ${money%10} грн.`
+}else{
+    string=`Заберіть свої гроші у сумі ${money} грн.`
+}
+answer.innerHTML = string
+  }
+        </script>
+    
+        <div class="container">
+           <p><b>Злий банкомат</b></p>
+    <form name="money" action="javascript:money()">
+    
+        <p style="margin-bottom: -20px;">Яку суму хочете зняти?</p><br>
+          (Найменша купюра банкомату - 10 грн)<input class="side" name="a" type="text" value="" size="4">
+        <span id="answer"></span>
+        <br><input class="btn" type="submit" value="OK">
+        <input class="btn" type="reset" name="reset" value="Скинути">
+    </form>
+    
+        </div>
+</body>
+</html>

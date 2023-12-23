@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рандомайзер</title>
+  <style>
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="shapesCanvas" width="600" height="600"></canvas>
+
+<script>
+  const canvas = document.getElementById('shapesCanvas');
+  const context = canvas.getContext('2d');
+
+  const numShapes = 10;
+
+  for (let i = 0; i < numShapes; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+
+    const randomColor = getRandomColor();
+
+    if (Math.random() < 0.5) {
+      drawTriangle(x, y, randomColor);
+    } else {
+      drawCircle(x, y, randomColor);
+    }
+  }
+
+  function drawTriangle(x, y, color) {
+    context.beginPath();
+    context.moveTo(x, y);
+    context.lineTo(x + 50, y);
+    context.lineTo(x + 25, y - 50);
+    context.closePath();
+
+    context.fillStyle = color;
+    context.fill();
+    context.stroke();
+  }
+
+  function drawCircle(x, y, color) {
+    context.beginPath();
+    context.arc(x, y, 25, 0, 2 * Math.PI);
+    context.closePath();
+
+    context.fillStyle = color;
+    context.fill();
+    context.stroke();
+  }
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+</script>
+
+</body>
+</html>

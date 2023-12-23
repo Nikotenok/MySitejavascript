@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliments</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <script>
+        function compliments(){
+        let compliments=["funny","smart","cool", "genius","clever", "sensible","cheerful","generous","kind","creative","quick-witted","hard-working","determined","optimistic","determined"]
+let animals=["polar bear", "cat","leopard","butterfly","duck","rabbit","ladybug", "monkey","rhino","squirrel","lion","chicken","cow","dog","deer","bird"]
+let colors=["red","yellow","blue","green","orange","pink","purple","violet","#84ff73","#a773ff","#ff73f8","#ff7373","#41354d","#f7fc71","#91ffdd"]
+
+let number= +document.compliments.a.value;
+let answer=document.getElementById("answer");
+let string='';
+if(isNaN(number)){
+    string="Ви ввели не число."
+}else{
+        for (i = 1; i <= number; i++){
+
+
+            let rand1=Math.floor(Math.random()*colors.length)
+            let rand2=Math.floor(Math.random()*compliments.length)
+            let rand3=Math.floor(Math.random()*animals.length)
+            
+            string+=`<p style='color:${colors[rand1]}'>${i} ) You are as ${compliments[rand2]} as ${animals[rand3]}! </p>`;
+       } }
+
+        answer.innerHTML = string;
+    }    
+    </script>
+        <form name="compliments" action="javascript:compliments()">
+            скільки компліментів ти хочеш побачити
+            <input class="side" name="a" type="text" value="" size="4">
+            <input class="btn" type="submit" value="Submit">
+            <input class="btn" type="reset" name="reset" value="Reset"><br>
+            
+        </form>
+         <span id="answer"></span>
+        </div>
+      <style>
+</body>
+</html>

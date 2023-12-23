@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sorting</title>
+</head>
+<body>
+
+<h2>Alphabetical sorting:</h2>
+<div id="Alphabeticalsorting"></div>
+
+<h2>Sort by population:</h2>
+<div id="sortedByPopulation"></div>
+
+<script>
+  const capitals = {
+    Abuja: 778567,
+    Algeria: 2988145,
+    Baku: 1792300,
+    Kiyv: 2884000,
+    Buenos_Aires: 15625084,
+    London: 9304016,
+    Warsaw: 1863056,
+    Berlin: 3769495,
+    Cairo: 9840591,
+    Lima: 9674755 ,
+  };
+
+  const sortedByAlphabet = Object.keys(capitals).sort();
+  displayResult('Alphabeticalsorting', sortedByAlphabet, capitals);
+
+  const sortedByPopulation = Object.keys(capitals).sort((a, b) => capitals[a] - capitals[b]);
+  displayResult('sortedByPopulation', sortedByPopulation, capitals);
+
+  function displayResult(containerId, sortedKeys, data) {
+    const container = document.getElementById(containerId);
+    const list = document.createElement('ul');
+
+    sortedKeys.forEach(key => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key}: ${data[key]} people`;
+      list.appendChild(listItem);
+    });
+
+    container.appendChild(list);
+  }
+</script>
+
+</body>
+</html>
